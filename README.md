@@ -63,4 +63,17 @@ abstract class Foo{
 	$f2->needPrepare('some data');
 	$f2->run('two');
 ```
+You need to modify this code in that way: every protected methods of each descendant class must write some text to a log-file. Restriction: you can`t modify any descendant class. Supposed we have log function with name `log`. Below the output you will have:
+```
+a piece of result log-file
+	method Foo1->doSomeWith called with data: 'one'
+	before calling method Foo1->doSomeMore;
+	after calling method Foo1->doSomeMore;
+	
+	method Foo2->doAnotherThings with data: 'some data'
+	method Foo2->doSomeWith called with data: 'some data'
+	method Foo2->doSomeWith called with data: 'two'
+	before calling method Foo2->doSomeMore;
+	after calling method Foo2->doSomeMore;
+```
 
