@@ -59,7 +59,7 @@ abstract class Foo{
 	$f1 = new Foo1();
 	$f1->run('one');
 	
-	$f2= new Foo2();
+	$f2 = new Foo2();
 	$f2->needPrepare('some data');
 	$f2->run('two');
 ```
