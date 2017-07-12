@@ -77,3 +77,64 @@ a piece of result log-file
 	after calling method Foo2->doSomeMore;
 ```
 
+## Question 2
+
+Consider the following php code:
+```
+class DoSome {
+
+	protected $_type;
+
+	public function __construct($whatType){
+		$this->_type = $whatType;
+	}
+	
+	protected function doFirst(){
+		// some code
+		// ...
+		if($this->_type == 'typeA'){
+			//...do A algo
+		}else if($this->_type == 'typeB'){
+			//...do B algo
+		}
+	}
+	
+	protected function doSecond(){
+		// some more code
+		//...
+		if($this->_type == 'typeA'){
+			//...do A algo
+		}else if($this->_type == 'typeB'){
+			//...do B algo
+		}
+	}
+	
+	public function doFinally(){
+		// common code
+		// ...
+		if($this->_type == 'typeA'){
+			//...do A algo
+			//... some more for A
+			//...
+			// then
+			$this->doFirst();
+			$this->doSecond();
+			// finaly do for A
+		}else if($this->_type == 'typeB'){
+			//...do B algo
+			//... some more for B
+			//...
+			$this->doFirst();
+			$this->doSecond();
+			// finaly do for B
+		}
+	}
+
+}
+
+$item = new DoSome('typeA');
+$item->doFinally();
+$item = new DoSome(‘typeB’);
+$item->doFinally();
+```
+What is the problem with this code? How we can enhance it?
