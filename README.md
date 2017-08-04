@@ -168,4 +168,4 @@ class CHILD extends ROOT {
 $a = new CHILD();
 $a->b();
 ```
-
+Will this code work? What will be printed on screen if we run it?
