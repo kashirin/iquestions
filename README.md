@@ -169,3 +169,37 @@ $a = new CHILD();
 $a->b();
 ```
 Will this code work? What will be printed on screen if we run it?
+
+## Question 4
+
+Consider the following php code:
+
+```
+class Foo{
+	
+	protected $state = null;
+	protected $level = null;
+	
+	public function setState($state){
+		$this->state = $state;
+	}
+	public function setLevel($level){
+		$this->level = $level;
+	}
+	
+	//...more methods and props
+	
+	public function report(){
+		echo 'State is ['.$this->state.'], level is ['.$this->level.']';
+	}
+	
+}
+
+$f = new Foo();
+
+$f->setState('empty');
+$f->setLevel('5');
+$f->report();
+```
+
+Supposed we have very long class Foo. It has dozen different boring methods and properties. In order to debug code right here and right now we need some modification of class Foo to provide logging each method invocation. Suppose we want to catch in log only two moments - just before method will be invoked and right after it will finished own work. For the first case we want to catch method name and passed arguments. For the second - only method name. Below the example output you need to obtain:
