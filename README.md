@@ -138,3 +138,34 @@ $item = new DoSome(‘typeB’);
 $item->doFinally();
 ```
 What is the problem with this code? How we can enhance it?
+
+## Question 3
+
+Consider the following php code:
+
+```
+class ROOT {
+     protected function a()
+     {
+         print_r(get_class($this).': from protected base class ⟨br⟩');
+     }
+ }
+
+class CHILD2 extends ROOT{
+
+} 
+
+class CHILD extends ROOT {
+
+     public function b()
+     {
+         $ss = new CHILD2();
+         $ss->a();
+     }
+ }
+ 
+
+$a = new CHILD();
+$a->b();
+```
+
